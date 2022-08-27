@@ -15,17 +15,17 @@ public class EmailController {
     @Autowired
     private EmailService emailService;
 
-    @Value("$(email.sender.username)")
+    @Value("${email.sender.username}")
     private String userEmail;
 
     @PostMapping(value = "/sendMail")
     public Response sendMail(@RequestBody Request request){
         System.out.println("Request Received : {}" + request.getMailReceiver() + ", " +
-                request.getMailBody() + ", " + request.getMailSubject());
+                request.getMailBody() + ", " + request.getMailSubject() + ", " + userEmail);
 
         try{
             emailService.sendMail(userEmail, request.getMailReceiver(), request.getMailBody(),
-                    request.getMailSubject());
+                    request.getMailSubject(),request.getMailCount());
         }
         catch (IOException e){
             e.printStackTrace();

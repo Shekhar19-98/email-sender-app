@@ -12,14 +12,14 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(String sender, String receiver, String body, String subject) throws IOException {
+    public void sendMail(String sender, String receiver, String body, String subject, int count) throws IOException {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(sender);
         mailMessage.setTo(receiver);
         mailMessage.setText(body);
         mailMessage.setSubject(subject);
 
-        for (int i =0; i < 100; i++){
+        for (int i =0; i < count; i++){
             mailSender.send(mailMessage);
             System.out.println((i+1) + " Mails Sent!");
         }
