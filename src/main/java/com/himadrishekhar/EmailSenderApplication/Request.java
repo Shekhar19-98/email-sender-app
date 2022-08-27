@@ -4,6 +4,15 @@ public class Request {
     private String mailReceiver;
     private String mailSubject;
     private String mailBody;
+    private int mailCount;
+
+    public int getMailCount() {
+        return mailCount;
+    }
+
+    public void setMailCount(int mailCount) {
+        this.mailCount = mailCount;
+    }
 
     public String getMailReceiver() {
         return mailReceiver;
